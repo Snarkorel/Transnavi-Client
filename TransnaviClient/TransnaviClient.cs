@@ -2,6 +2,10 @@
 using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
+using TransnaviClient.request;
+using Newtonsoft.Json;
+using TransnaviClient.response;
+using System.Collections.Generic;
 
 namespace TransnaviClient
 {
@@ -36,6 +40,26 @@ namespace TransnaviClient
                 return string.Empty;
             }
         }
+
+        public void Init() //TODO: bool, error handling
+        {
+            var startReq = new StartSessionRequest();
+            var startReqJson = JsonConvert.SerializeObject(startReq);
+            var httpResponse = PostHttpRequest(startReqJson);
+            var jsonResponse = JsonConvert.DeserializeObject<StartSessionResponse>(httpResponse.Result);
+            _sid = jsonResponse.Result.Sid;
+        }
+
+        public List<GetStopArrivesResponseResult> GetStopArrivalForecast(int stopId)
+        {
+            var stopArrReq = new GetStopArrivesRequest(_sid, stopId);
+            var stopArrJson = JsonConvert.SerializeObject(stopArrReq);
+            var stopArrivesResponse = PostHttpRequest(stopArrJson);
+            var stopArrRespJson = JsonConvert.DeserializeObject<GetStopArriveResponse>(stopArrivesResponse.Result);
+            return stopArrRespJson.result;
+        }
+
+        
 
         //TODO: reqeuest-response tasks, start session, etc.
     }
