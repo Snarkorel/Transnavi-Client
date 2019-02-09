@@ -18,7 +18,7 @@ namespace Snarkorel.transnavi.client
         private const string Uri = "http://moscow.map.office.transnavi.ru/api/rpc.php";
         private const string CredentialsFormat = "{0}:{1}";
 
-        //TODO: enum for transportTypeId (1/2/3 - bus/trol/tram), enum for RouteDirection ("A"/"B"), enum for special trips(?, "F", "E", etc.)
+        //TODO: enum for special trips(?, "F", "E", etc.)
 
         public TransnaviClient(string username, string password)
         {
@@ -180,15 +180,13 @@ namespace Snarkorel.transnavi.client
             return response.Result;
         }
 
-        //TODO: enum instead of direction string
-
         /// <summary>
         /// Return schedule for selected stop
         /// </summary>
         /// <returns></returns>
-        public GetScheduleResponseResult GetSchedule(int routeId, DateTime date, string direction, int stopId)
+        public GetScheduleResponseResult GetSchedule(int routeId, DateTime date, Direction direction, int stopId)
         {
-            var request = new GetScheduleRequest(_requestId, _sessionId, routeId, date, direction, stopId);
+            var request = new GetScheduleRequest(_requestId, _sessionId, routeId, date, DirectionHelper.GetDirectionString(direction), stopId);
             var response = (GetScheduleResponse)GetResponse(request, typeof(GetScheduleResponse));
             return response.Result;
         }
@@ -197,9 +195,9 @@ namespace Snarkorel.transnavi.client
         /// Return schedule for all stops in selected direction
         /// </summary>
         /// <returns></returns>
-        public GetScheduleResponseResult GetSchedule(int routeId, DateTime date, string direction)
+        public GetScheduleResponseResult GetSchedule(int routeId, DateTime date, Direction direction)
         {
-            var request = new GetScheduleRequest(_requestId, _sessionId, routeId, date, direction);
+            var request = new GetScheduleRequest(_requestId, _sessionId, routeId, date, DirectionHelper.GetDirectionString(direction));
             var response = (GetScheduleResponse)GetResponse(request, typeof(GetScheduleResponse));
             return response.Result;
         }
