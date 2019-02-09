@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace transnavi.client.response
+namespace Snarkorel.transnavi.client.response
 {
     public class StartSessionResponseResult
     {

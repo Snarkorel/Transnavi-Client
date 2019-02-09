@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace transnavi.client.request
+namespace Snarkorel.transnavi.client.request
 {
     public class GetScheduleRequestParams
     {

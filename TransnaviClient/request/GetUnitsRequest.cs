@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace transnavi.client.request
+namespace Snarkorel.transnavi.client.request
 {
     public class GetUnitsRequestParams
     {

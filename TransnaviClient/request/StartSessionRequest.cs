@@ -1,4 +1,4 @@
-﻿namespace transnavi.client.request
+﻿namespace Snarkorel.transnavi.client.request
 {
     public class StartSessionRequest : Request
     {

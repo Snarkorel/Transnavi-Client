@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace transnavi.client.request
+namespace Snarkorel.transnavi.client.request
 {
     public class TransportTypeRequestParams
     {

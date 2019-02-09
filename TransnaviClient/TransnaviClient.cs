@@ -2,12 +2,12 @@
 using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
-using transnavi.client.request;
+using Snarkorel.transnavi.client.request;
 using Newtonsoft.Json;
-using transnavi.client.response;
+using Snarkorel.transnavi.client.response;
 using System.Collections.Generic;
 
-namespace transnavi.client
+namespace Snarkorel.transnavi.client
 {
     public class TransnaviClient
     {

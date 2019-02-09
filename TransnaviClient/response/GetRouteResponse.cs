@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json; //TODO
 
-namespace transnavi.client.response
+namespace Snarkorel.transnavi.client.response
 {
     public class GetRouteResponseStopList
     {
