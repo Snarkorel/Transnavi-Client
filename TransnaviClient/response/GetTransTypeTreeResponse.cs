@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Snarkorel.transnavi.client.response
 {
-    public class TransportTypeTreeResponseRoute
+    public class GetTransportTypeTreeResponseRoute
     {
         [JsonProperty("mr_id")]
         public string RouteId { get; set; }
@@ -13,19 +13,19 @@ namespace Snarkorel.transnavi.client.response
         public string RouteName { get; set; }
     }
 
-    public class TransportTypeTreeResponseResult
+    public class GetTransportTypeTreeResponseResult
     {
         [JsonProperty("tt_id")]
         public string TransportTypeId { get; set; }
         [JsonProperty("tt_title")]
         public string TransportTypeName { get; set; }
         [JsonProperty("routes")]
-        public List<TransportTypeTreeResponseRoute> Routes { get; set; }
+        public List<GetTransportTypeTreeResponseRoute> Routes { get; set; }
     }
 
-    public class TransportTypeTreeResponse : Response
+    public class GetTransportTypeTreeResponse : Response
     {
         [JsonProperty("result")]
-        public List<TransportTypeTreeResponseResult> Result { get; set; }
+        public List<GetTransportTypeTreeResponseResult> Result { get; set; }
     }
 }

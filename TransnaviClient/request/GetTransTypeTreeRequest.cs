@@ -2,7 +2,7 @@
 
 namespace Snarkorel.transnavi.client.request
 {
-    public class TransportTypeRequestParams
+    public class GetTransportTypeRequestParams
     {
         [JsonProperty("sid")]
         public string SessionId { get; set; }
@@ -13,20 +13,20 @@ namespace Snarkorel.transnavi.client.request
         public string OkId { get; set; }
     }
 
-    public class TransportTypeRequest : Request
+    public class GetTransportTypeRequest : Request
     {
         private const string _method = "getTransTypeTree";
         [JsonProperty("params")]
-        public TransportTypeRequestParams Params { get; set; }
+        public GetTransportTypeRequestParams Params { get; set; }
 
         /// <summary>
         /// Get tree of all routes and all transport types (trolleybus, bus, tram)
         /// </summary>
         /// <param name="requestId"></param>
         /// <param name="sessionId"></param>
-        public TransportTypeRequest(int requestId, string sessionId) : base(requestId, _method)
+        public GetTransportTypeRequest(int requestId, string sessionId) : base(requestId, _method)
         {
-            Params = new TransportTypeRequestParams
+            Params = new GetTransportTypeRequestParams
             {
                 OkId = string.Empty,
                 SessionId = sessionId
