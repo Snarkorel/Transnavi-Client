@@ -35,6 +35,7 @@ namespace Snarkorel.transnavi.client
             return (Response)responseJson;
         }
 
+        //TODO: auth error handling
         private async Task<string> PostHttpRequest(string payload)
         {
             var response = await _client.PostAsync(Uri, new StringContent(payload));
@@ -43,6 +44,11 @@ namespace Snarkorel.transnavi.client
             if (responseBody.Length == 0)
                 throw new Exception("Empty response!");
             return responseBody;
+        }
+
+        public bool GetInitialized()
+        {
+            return _isInitialized;
         }
 
         public bool Init()
@@ -61,12 +67,7 @@ namespace Snarkorel.transnavi.client
             }
             return _isInitialized;
         }
-
-        public bool GetInitialized()
-        {
-            return _isInitialized;
-        }
-
+            
         public List<GetStopArrivesResponseResult> GetStopArrivalForecast(int stopId)
         {
             var stopArrReq = new GetStopArrivesRequest(_requestId, _sid, stopId);
@@ -74,8 +75,6 @@ namespace Snarkorel.transnavi.client
             return response.result;
         }
 
-        //TODO: response error handling, auth error handling
-
-        //TODO: reqeuest-response tasks, start session, etc.
+        //TODO: support all requests
     }
 }
