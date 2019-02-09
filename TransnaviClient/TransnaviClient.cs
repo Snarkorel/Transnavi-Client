@@ -62,6 +62,11 @@ namespace transnavi.client
             return _isInitialized;
         }
 
+        public bool GetInitialized()
+        {
+            return _isInitialized;
+        }
+
         public List<GetStopArrivesResponseResult> GetStopArrivalForecast(int stopId)
         {
             var stopArrReq = new GetStopArrivesRequest(_requestId, _sid, stopId);
