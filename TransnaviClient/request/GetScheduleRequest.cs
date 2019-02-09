@@ -13,8 +13,11 @@ namespace Snarkorel.transnavi.client.request
         public string Date { get; set; }
         [JsonProperty("rl_racetype")]
         public string Direction { get; set; }
+        /// <summary>
+        /// Unknown parameter. Maybe used for definition of last stop in each direction (incl. special routes). Can be "A", "B", "E"
+        /// </summary>
         [JsonProperty("rc_kkp")]
-        public string RcKkp { get; set; } //I don't know what is this. Can be "A", "B", "E"
+        public string RcKkp { get; set; }
         [JsonProperty("st_id")]
         public int StopId { get; set; }
     }

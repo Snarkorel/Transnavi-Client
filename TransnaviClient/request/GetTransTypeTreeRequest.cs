@@ -6,8 +6,11 @@ namespace Snarkorel.transnavi.client.request
     {
         [JsonProperty("sid")]
         public string SessionId { get; set; }
+        /// <summary>
+        /// Unknown parameter. Always empty
+        /// </summary>
         [JsonProperty("ok_id")]
-        public string OkId { get; set; } //I don't know, what is this
+        public string OkId { get; set; }
     }
 
     public class TransportTypeRequest : Request
