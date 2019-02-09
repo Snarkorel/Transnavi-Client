@@ -14,13 +14,13 @@ namespace transnavi.client
         private string _sid;
         private int _requestId = 1;
         private bool _isInitialized;
-        private static HttpClient _client;
+        private HttpClient _client;
         private const string Uri = "http://moscow.map.office.transnavi.ru/api/rpc.php";
         private const string CredentialsFormat = "{0}:{1}";
 
         public TransnaviClient(string username, string password)
         {
-            var _client = new HttpClient();
+            _client = new HttpClient();
             var credentials = string.Format(CredentialsFormat, username, password);
             _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.Default.GetBytes(credentials.ToCharArray())));
         }
@@ -35,7 +35,7 @@ namespace transnavi.client
             return responseJson;
         }
 
-        private static async Task<string> PostHttpRequest(string payload)
+        private async Task<string> PostHttpRequest(string payload)
         {
             var response = await _client.PostAsync(Uri, new StringContent(payload));
             response.EnsureSuccessStatusCode();
