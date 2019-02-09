@@ -14,7 +14,7 @@ namespace TransnaviClient.response
         public string st_title { get; set; }
     }
 
-    public class GetUnitArriveResponse
+    public class GetUnitArriveResponse : Response
     {
         public string jsonrpc { get; set; }
         public List<GetUnitArriveResponseResult> result { get; set; }

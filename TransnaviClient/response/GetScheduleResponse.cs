@@ -38,7 +38,7 @@ namespace TransnaviClient.response
         public List<object> races { get; set; }
     }
 
-    public class GetScheduleResponse
+    public class GetScheduleResponse : Response
     {
         public string jsonrpc { get; set; }
         public GetScheduleResponseResult result { get; set; }

@@ -8,7 +8,7 @@ namespace TransnaviClient.response
         public string Sid { get; set; }
     }
 
-    public class StartSessionResponse
+    public class StartSessionResponse : Response
     {
         [JsonProperty("jsonrpc")]
         public string Jsonrpc { get; set; }

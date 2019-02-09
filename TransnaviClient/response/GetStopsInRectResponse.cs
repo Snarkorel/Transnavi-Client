@@ -11,7 +11,7 @@ namespace TransnaviClient.response
         public string st_long { get; set; }
     }
 
-    public class GetStopsInRectResponse
+    public class GetStopsInRectResponse : Response
     {
         public string jsonrpc { get; set; }
         public List<GetStopsInRectResponseResult> result { get; set; }

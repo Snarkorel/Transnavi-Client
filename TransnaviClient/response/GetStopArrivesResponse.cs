@@ -16,7 +16,7 @@ namespace TransnaviClient.response
         public string u_inv { get; set; }
     }
 
-    public class GetStopArriveResponse
+    public class GetStopArriveResponse : Response
     {
         public string jsonrpc { get; set; }
         public List<GetStopArrivesResponseResult> result { get; set; }

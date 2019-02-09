@@ -45,7 +45,7 @@ namespace TransnaviClient.response
         public List<GetRouteResponsePark> parks { get; set; }
     }
 
-    public class GetRouteResponse
+    public class GetRouteResponse : Response
     {
         public string jsonrpc { get; set; }
         public GetRouteResponseResult result { get; set; }

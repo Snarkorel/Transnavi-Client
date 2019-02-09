@@ -17,7 +17,7 @@ namespace TransnaviClient.response
         public List<TransportTypeTreeResponseRoute> routes { get; set; }
     }
 
-    public class TransportTypeTreeResponse
+    public class TransportTypeTreeResponse : Response
     {
         public string jsonrpc { get; set; }
         public List<TransportTypeTreeResponseResult> result { get; set; }

@@ -25,7 +25,7 @@ namespace TransnaviClient.response
         public string rl_laststation_title { get; set; }
     }
 
-    public class GetUnitsResponse
+    public class GetUnitsResponse : Response
     {
         public string jsonrpc { get; set; }
         public List<GetUnitsResponseResult> result { get; set; }

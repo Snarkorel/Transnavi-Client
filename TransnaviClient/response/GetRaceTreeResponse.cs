@@ -23,7 +23,7 @@ namespace TransnaviClient.response
         public List<GetRaceTreeResponseStopList> stopList { get; set; }
     }
 
-    public class GetRaceTreeResponse
+    public class GetRaceTreeResponse : Response
     {
         public string jsonrpc { get; set; }
         public List<GetRaceTreeResponseResult> result { get; set; }
