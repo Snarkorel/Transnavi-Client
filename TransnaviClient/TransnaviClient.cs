@@ -18,6 +18,8 @@ namespace Snarkorel.transnavi.client
         private const string Uri = "http://moscow.map.office.transnavi.ru/api/rpc.php";
         private const string CredentialsFormat = "{0}:{1}";
 
+        //TODO: enum for transportTypeId (1/2/3 - bus/trol/tram), enum for RouteDirection ("A"/"B")
+
         public TransnaviClient(string username, string password)
         {
             _client = new HttpClient();
@@ -57,13 +59,13 @@ namespace Snarkorel.transnavi.client
             try
             {
                 var response = (StartSessionResponse)GetResponse(startReq, typeof(StartSessionResponse));
-                _sid = response.Result.Sid;
+                _sid = response.Result.SessionId;
                 _isInitialized = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 _isInitialized = false;
-                Console.WriteLine("Failed to initialize, exception: " + e.Message);
+                throw;
             }
             return _isInitialized;
         }
@@ -72,7 +74,7 @@ namespace Snarkorel.transnavi.client
         {
             var stopArrReq = new GetStopArrivesRequest(_requestId, _sid, stopId);
             var response = (GetStopArrivesResponse)GetResponse(stopArrReq, typeof(GetStopArrivesResponse));
-            return response.result;
+            return response.Result;
         }
 
         //TODO: support all requests
