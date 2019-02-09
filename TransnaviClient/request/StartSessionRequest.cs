@@ -1,21 +1,15 @@
-﻿using Newtonsoft.Json;
-
-namespace TransnaviClient.request
+﻿namespace TransnaviClient.request
 {
-    public class StartSessionRequest
+    public class StartSessionRequest : Request
     {
-        [JsonProperty("id")]
-        public int Id { get; set; }
-        [JsonProperty("jsonrpc")]
-        public string JsonRpc { get; set; }
-        [JsonProperty("method")]
-        public string Method { get; set; }
+        private const string _method = "startSession";
 
-        public StartSessionRequest()
+        /// <summary>
+        /// Start session and get session id
+        /// </summary>
+        /// <param name="requestId"></param>
+        public StartSessionRequest(int requestId) : base(requestId, _method)
         {
-            Id = 1;
-            JsonRpc = "2.0";
-            Method = "startSession";
         }
     }
 }

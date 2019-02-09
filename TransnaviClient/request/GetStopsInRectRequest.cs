@@ -1,23 +1,47 @@
-﻿using Newtonsoft.Json; //TODO
+﻿using Newtonsoft.Json;
 
 namespace TransnaviClient.request
 {
     public class GetStopsInRectRequestParams
     {
-        public string sid { get; set; }
-        public double minlat { get; set; }
-        public double maxlat { get; set; }
-        public double minlong { get; set; }
-        public double maxlong { get; set; }
+        [JsonProperty("sid")]
+        public string SessionId { get; set; }
+        [JsonProperty("minlat")]
+        public double MinLatitude { get; set; }
+        [JsonProperty("maxlat")]
+        public double MaxLatitude { get; set; }
+        [JsonProperty("minlong")]
+        public double MinLongitude { get; set; }
+        [JsonProperty("maxlong")]
+        public double MaxLongitude { get; set; }
     }
 
-    public class GetStopsInRectRequest
+    public class GetStopsInRectRequest : Request
     {
-        public string jsonrpc { get; set; }
-        public string method { get; set; }
-        public GetStopsInRectRequestParams @params { get; set; }
-        public int id { get; set; }
+        private const string _method = "getStopsInRect";
 
-        //TODO: .ctor
+        [JsonProperty("params")]
+        public GetStopsInRectRequestParams Params { get; set; }
+
+        /// <summary>
+        /// Get list of all stops in region with given coordinates
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="sessionId"></param>
+        /// <param name="minLatitude"></param>
+        /// <param name="maxLatitude"></param>
+        /// <param name="minLongitude"></param>
+        /// <param name="maxLongitude"></param>
+        public GetStopsInRectRequest(int requestId, string sessionId, double minLatitude, double maxLatitude, double minLongitude, double maxLongitude) : base(requestId, _method)
+        {
+            Params = new GetStopsInRectRequestParams()
+            {
+                SessionId = sessionId,
+                MinLatitude = minLatitude,
+                MaxLatitude = maxLatitude,
+                MinLongitude = minLongitude,
+                MaxLongitude = maxLongitude
+            };
+        }
     }
 }

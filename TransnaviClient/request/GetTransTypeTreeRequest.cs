@@ -1,28 +1,33 @@
-﻿using Newtonsoft.Json; //TODO
+﻿using Newtonsoft.Json;
 
 namespace TransnaviClient.request
 {
     public class TransportTypeRequestParams
     {
-        public string sid { get; set; }
-        public string ok_id { get; set; }
+        [JsonProperty("sid")]
+        public string SessionId { get; set; }
+        [JsonProperty("ok_id")]
+        public string OkId { get; set; } //I don't know, what is this
     }
 
-    public class TransportTypeRequest
+    public class TransportTypeRequest : Request
     {
-        public string jsonrpc { get; set; }
-        public string method { get; set; }
-        public TransportTypeRequestParams @params { get; set; }
-        public int id { get; set; }
+        private const string _method = "getTransTypeTree";
+        [JsonProperty("params")]
+        public TransportTypeRequestParams Params { get; set; }
 
-        public TransportTypeRequest(string sid)
+        /// <summary>
+        /// Get tree of all routes and all transport types (trolleybus, bus, tram)
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="sessionId"></param>
+        public TransportTypeRequest(int requestId, string sessionId) : base(requestId, _method)
         {
-            id = 2;
-            jsonrpc = "2.0";
-            method = "getTransTypeTree";
-            @params = new TransportTypeRequestParams();
-            @params.ok_id = string.Empty;
-            @params.sid = sid;
+            Params = new TransportTypeRequestParams
+            {
+                OkId = string.Empty,
+                SessionId = sessionId
+            };
         }
     }
 }

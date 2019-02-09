@@ -1,21 +1,40 @@
-﻿using Newtonsoft.Json; //TODO
+﻿using Newtonsoft.Json;
+using System;
 
 namespace TransnaviClient.request
 {
     public class GetRaceTreeRequestParams
     {
-        public string sid { get; set; }
-        public string mr_id { get; set; }
-        public string data { get; set; }
+        [JsonProperty("sid")]
+        public string SessionId { get; set; }
+        [JsonProperty("mr_id")]
+        public string RouteId { get; set; }
+        [JsonProperty("data")]
+        public string Date { get; set; }
     }
 
-    public class GetRaceTreeRequest
+    public class GetRaceTreeRequest : Request
     {
-        public string jsonrpc { get; set; }
-        public string method { get; set; }
-        public GetRaceTreeRequestParams @params { get; set; }
-        public int id { get; set; }
+        private const string _method = "getRaceTree";
 
-        //TODO: .ctor
+        [JsonProperty("params")]
+        public GetRaceTreeRequestParams Params { get; set; }
+
+        /// <summary>
+        /// Get all trips (A, B, special routes) for selected route
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="sessionId"></param>
+        /// <param name="routeId"></param>
+        /// <param name="date"></param>
+        public GetRaceTreeRequest(int requestId, string sessionId, int routeId, DateTime date) : base(requestId, _method)
+        {
+            Params = new GetRaceTreeRequestParams()
+            {
+                SessionId = sessionId,
+                RouteId = routeId.ToString(),
+                Date = date.ToString("yyyy-MM-dd")
+            };
+        }
     }
 }

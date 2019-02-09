@@ -1,28 +1,35 @@
-﻿using Newtonsoft.Json; //TODO
+﻿using Newtonsoft.Json;
 
 namespace TransnaviClient.request
 {
     public class GetRouteRequestParams
     {
-        public string sid { get; set; }
-        public string mr_id { get; set; }
+        [JsonProperty("sid")]
+        public string SessionId { get; set; }
+        [JsonProperty("mr_id")]
+        public string RouteId { get; set; }
     }
 
-    public class GetRouteRequest
+    public class GetRouteRequest : Request
     {
-        public string jsonrpc { get; set; }
-        public string method { get; set; }
-        public GetRouteRequestParams @params { get; set; }
-        public int id { get; set; }
+        private const string _method = "getRoute";
 
-        public GetRouteRequest(string sid, int routeId)
+        [JsonProperty("params")]
+        public GetRouteRequestParams Params { get; set; }
+
+        /// <summary>
+        /// Get all stops for selected route
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="sessionId"></param>
+        /// <param name="routeId"></param>
+        public GetRouteRequest(int requestId, string sessionId, int routeId) : base(requestId, _method)
         {
-            id = 21;
-            jsonrpc = "2.0";
-            method = "getRoute";
-            @params = new GetRouteRequestParams();
-            @params.sid = sid;
-            @params.mr_id = routeId.ToString();
+            Params = new GetRouteRequestParams
+            {
+                SessionId = sessionId,
+                RouteId = routeId.ToString()
+            };
         }
     }
 }

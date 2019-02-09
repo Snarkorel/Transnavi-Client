@@ -1,25 +1,98 @@
-﻿using Newtonsoft.Json; //TODO
+﻿using Newtonsoft.Json;
+using System;
 
 namespace TransnaviClient.request
 {
     public class GetScheduleRequestParams
     {
-        public string sid { get; set; }
-        public string mr_id { get; set; }
-        public string data { get; set; }
-        public string rl_racetype { get; set; }
-        public string rc_kkp { get; set; }
-        public int st_id { get; set; }
+        [JsonProperty("sid")]
+        public string SessionId { get; set; }
+        [JsonProperty("mr_id")]
+        public string RouteId { get; set; }
+        [JsonProperty("data")]
+        public string Date { get; set; }
+        [JsonProperty("rl_racetype")]
+        public string Direction { get; set; }
+        [JsonProperty("rc_kkp")]
+        public string RcKkp { get; set; } //I don't know what is this. Can be "A", "B", "E"
+        [JsonProperty("st_id")]
+        public int StopId { get; set; }
     }
 
-    public class GetScheduleRequest
+    public class GetScheduleRequest : Request
     {
-        public string jsonrpc { get; set; }
-        public string method { get; set; }
-        public GetScheduleRequestParams @params { get; set; }
-        public int id { get; set; }
+        private const string _method = "getRaspisanie";
 
-        //TODO: support for A/B stops, support for intermediate stop, support for full schedule (rc_kkp, st_id)
-        //TODO: .ctor
+        [JsonProperty("params")]
+        public GetScheduleRequestParams Params { get; set; }
+
+        //TODO: const strings for directions ("A"/"B")
+
+        /// <summary>
+        /// Get schedule (with all parameters)
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="sessionId"></param>
+        /// <param name="routeId"></param>
+        /// <param name="date"></param>
+        /// <param name="direction"></param>
+        /// <param name="rcKkp"></param>
+        /// <param name="stopId"></param>
+        public GetScheduleRequest(int requestId, string sessionId, int routeId, DateTime date, string direction, string rcKkp, int stopId) : base(requestId, _method)
+        {
+            Params = new GetScheduleRequestParams()
+            {
+                SessionId = sessionId,
+                RouteId = routeId.ToString(),
+                Date = date.ToString("yyyy-MM-dd"),
+                Direction = direction,
+                RcKkp = rcKkp,
+                StopId = stopId
+            };
+        }
+
+        /// <summary>
+        /// Get schedule (without unknown rc_kkp parameter)
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="sessionId"></param>
+        /// <param name="routeId"></param>
+        /// <param name="date"></param>
+        /// <param name="direction"></param>
+        /// <param name="stopId"></param>
+        public GetScheduleRequest(int requestId, string sessionId, int routeId, DateTime date, string direction, int stopId) : base(requestId, _method)
+        {
+            Params = new GetScheduleRequestParams()
+            {
+                SessionId = sessionId,
+                RouteId = routeId.ToString(),
+                Date = date.ToString("yyyy-MM-dd"),
+                Direction = direction,
+                RcKkp = string.Empty,
+                StopId = stopId
+            };
+        }
+
+        /// <summary>
+        /// Get schedule for all stops in direction
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="sessionId"></param>
+        /// <param name="routeId"></param>
+        /// <param name="date"></param>
+        /// <param name="direction"></param>
+        public GetScheduleRequest(int requestId, string sessionId, int routeId, DateTime date, string direction) : base(requestId, _method)
+        {
+            Params = new GetScheduleRequestParams()
+            {
+                SessionId = sessionId,
+                RouteId = routeId.ToString(),
+                Date = date.ToString("yyyy-MM-dd"),
+                Direction = direction,
+                RcKkp = string.Empty,
+                StopId = 0
+            };
+        }
+
     }
 }

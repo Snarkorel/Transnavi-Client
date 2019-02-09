@@ -1,34 +1,41 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json; //TODO
+using Newtonsoft.Json;
 
 namespace TransnaviClient.request
 {
     public class GetUnitsRequestParams
     {
-        public string sid { get; set; }
-        public List<string> marshList { get; set; }
+        [JsonProperty("sid")]
+        public string SessionId { get; set; }
+        [JsonProperty("marshList")]
+        public List<string> RoutesList { get; set; }
     }
 
-    public class GetUnitsRequest
+    public class GetUnitsRequest : Request
     {
-        public string jsonrpc { get; set; }
-        public string method { get; set; }
-        public GetUnitsRequestParams @params { get; set; }
-        public int id { get; set; }
+        private const string _method = "getUnits";
 
-        public GetUnitsRequest(string sid, List<int> routeIds)
+        [JsonProperty("params")]
+        public GetUnitsRequestParams Params { get; set; }
+
+        /// <summary>
+        /// Get info about transport on route(s)
+        /// </summary>
+        /// <param name="requestId">Request ID</param>
+        /// <param name="sessionId">Session ID</param>
+        /// <param name="routeIds">List of route id's</param>
+        public GetUnitsRequest(int requestId, string sessionId, List<int> routeIds) : base (requestId, _method)
         {
-            id = 26;
-            jsonrpc = "2.0";
-            method = "getUnits";
-            @params = new GetUnitsRequestParams();
-            @params.sid = sid;
+            Params = new GetUnitsRequestParams
+            {
+                SessionId = sessionId
+            };
             var strList = new List<string>();
             foreach (var id in routeIds)
             {
                 strList.Add(id.ToString());
             }
-            @params.marshList = strList;
+            Params.RoutesList = strList;
         }
     }
 }

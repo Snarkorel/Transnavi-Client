@@ -1,28 +1,35 @@
-﻿using Newtonsoft.Json; //TODO
+﻿using Newtonsoft.Json;
 
 namespace TransnaviClient.request
 {
     public class GetStopArrivesRequestParams
     {
-        public string sid { get; set; }
-        public string st_id { get; set; }
+        [JsonProperty("sid")]
+        public string SessionId { get; set; }
+        [JsonProperty("st_id")]
+        public string StopId { get; set; }
     }
 
-    public class GetStopArrivesRequest
+    public class GetStopArrivesRequest : Request
     {
-        public string jsonrpc { get; set; }
-        public string method { get; set; }
-        public GetStopArrivesRequestParams @params { get; set; }
-        public int id { get; set; }
+        private const string _method = "getStopArrive";
 
-        public GetStopArrivesRequest(string sid, int stopId)
+        [JsonProperty("params")]
+        public GetStopArrivesRequestParams Params { get; set; }
+
+        /// <summary>
+        /// Get arrival forecast for stop with given ID
+        /// </summary>
+        /// <param name="requestId"
+        /// <param name="sid"></param>
+        /// <param name="stopId"></param>
+        public GetStopArrivesRequest(int requestId, string sessionId, int stopId) : base(requestId, _method)
         {
-            id = 4;
-            jsonrpc = "2.0";
-            method = "getStopArrive";
-            @params = new GetStopArrivesRequestParams();
-            @params.sid = sid;
-            @params.st_id = stopId.ToString();
+            Params = new GetStopArrivesRequestParams
+            {
+                SessionId = sessionId,
+                StopId = stopId.ToString()
+            };
         }
     }
 }

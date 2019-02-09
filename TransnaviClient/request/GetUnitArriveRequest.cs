@@ -1,20 +1,35 @@
-﻿using Newtonsoft.Json; //TODO
+﻿using Newtonsoft.Json;
 
 namespace TransnaviClient.request
 {
     public class GetUnitArriveRequestParams
     {
-        public string sid { get; set; }
-        public string u_id { get; set; }
+        [JsonProperty("sid")]
+        public string SessionId { get; set; }
+        [JsonProperty("u_id")]
+        public string TransportId { get; set; }
     }
 
-    public class GetUnitArriveRequest
+    public class GetUnitArriveRequest : Request
     {
-        public string jsonrpc { get; set; }
-        public string method { get; set; }
-        public GetUnitArriveRequestParams @params { get; set; }
-        public int id { get; set; }
+        private const string _method = "getUnitArrive";
 
-        //TODO: .ctor
+        [JsonProperty("params")]
+        public GetUnitArriveRequestParams Params { get; set; }
+        
+        /// <summary>
+        /// Get arrival forecast for selected bus/trolleybus/tram
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="sessionId"></param>
+        /// <param name="transportId">String that represents ID of bus, trolleybus or tram</param>
+        public GetUnitArriveRequest(int requestId, string sessionId, string transportId) : base (requestId, _method)
+        {           
+            Params = new GetUnitArriveRequestParams()
+            {
+                SessionId = sessionId,
+                TransportId = transportId
+            };
+        }
     }
 }
