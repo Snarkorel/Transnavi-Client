@@ -59,7 +59,9 @@ namespace TransnaviClient
             return stopArrRespJson.result;
         }
 
-        
+        //TODO: method for request-response serialization, POST and deserialization
+
+        //TODO: response error handling, auth error handling
 
         //TODO: reqeuest-response tasks, start session, etc.
     }
