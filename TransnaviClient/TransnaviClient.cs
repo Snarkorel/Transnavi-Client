@@ -40,9 +40,9 @@ namespace Snarkorel.transnavi.client
         //TODO: auth error handling
         private async Task<string> PostHttpRequest(string payload)
         {
-            var response = await _client.PostAsync(Uri, new StringContent(payload));
+            var response = await _client.PostAsync(Uri, new StringContent(payload)).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            var responseBody = await response.Content.ReadAsStringAsync();
+            var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (responseBody.Length == 0)
                 throw new Exception("Empty response!");
             return responseBody;
