@@ -48,6 +48,7 @@
     <Compile Include="request\GetUnitArriveRequest.cs" />
     <Compile Include="request\GetUnitsInRectRequest.cs" />
     <Compile Include="request\GetUnitsRequest.cs" />
+    <Compile Include="request\Request.cs" />
     <Compile Include="request\StartSessionRequest.cs" />
     <Compile Include="response\GetRaceTreeResponse.cs" />
     <Compile Include="response\GetRouteResponse.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="response\GetUnitArriveResponse.cs" />
     <Compile Include="response\GetUnitsInRectResponse.cs" />
     <Compile Include="response\GetUnitsResponse.cs" />
+    <Compile Include="response\Response.cs" />
     <Compile Include="response\StartSessionResponse.cs" />
     <Compile Include="TransnaviClient.cs" />
   </ItemGroup>
