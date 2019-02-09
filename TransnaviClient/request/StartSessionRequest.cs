@@ -1,4 +1,4 @@
-﻿namespace TransnaviClient.request
+﻿namespace transnavi.client.request
 {
     public class StartSessionRequest : Request
     {

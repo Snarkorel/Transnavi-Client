@@ -2,12 +2,12 @@
 using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
-using TransnaviClient.request;
+using transnavi.client.request;
 using Newtonsoft.Json;
-using TransnaviClient.response;
+using transnavi.client.response;
 using System.Collections.Generic;
 
-namespace TransnaviClient
+namespace transnavi.client
 {
     public class TransnaviClient
     {
@@ -65,10 +65,8 @@ namespace TransnaviClient
         public List<GetStopArrivesResponseResult> GetStopArrivalForecast(int stopId)
         {
             var stopArrReq = new GetStopArrivesRequest(_requestId, _sid, stopId);
-            var stopArrJson = JsonConvert.SerializeObject(stopArrReq);
-            var stopArrivesResponse = PostHttpRequest(stopArrJson);
-            var stopArrRespJson = JsonConvert.DeserializeObject<GetStopArriveResponse>(stopArrivesResponse.Result);
-            return stopArrRespJson.result;
+            var response = GetResponse(stopArrReq) as GetStopArrivesResponse;
+            return response.result;
         }
 
         //TODO: response error handling, auth error handling

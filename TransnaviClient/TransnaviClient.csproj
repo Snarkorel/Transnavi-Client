@@ -7,7 +7,7 @@
     <ProjectGuid>{D1358FB9-13CE-416B-8838-DB8A1362D3D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TransnaviClient</RootNamespace>
+    <RootNamespace>transnavi.client</RootNamespace>
     <AssemblyName>TransnaviClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

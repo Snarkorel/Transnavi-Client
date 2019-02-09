@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json; //TODO
 
-namespace TransnaviClient.response
+namespace transnavi.client.response
 {
     public class GetRaceTreeResponseStopList
     {

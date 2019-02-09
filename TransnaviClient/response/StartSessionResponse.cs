@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace TransnaviClient.response
+namespace transnavi.client.response
 {
     public class StartSessionResponseResult
     {

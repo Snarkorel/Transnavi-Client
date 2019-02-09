@@ -1,4 +1,4 @@
-﻿namespace TransnaviClient.response
+﻿namespace transnavi.client.response
 {
     public abstract class Response
     {

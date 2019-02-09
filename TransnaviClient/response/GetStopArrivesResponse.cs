@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json; //TODO
 
-namespace TransnaviClient.response
+namespace transnavi.client.response
 {
     public class GetStopArrivesResponseResult
     {
@@ -16,7 +16,7 @@ namespace TransnaviClient.response
         public string u_inv { get; set; }
     }
 
-    public class GetStopArriveResponse : Response
+    public class GetStopArrivesResponse : Response
     {
         public string jsonrpc { get; set; }
         public List<GetStopArrivesResponseResult> result { get; set; }
