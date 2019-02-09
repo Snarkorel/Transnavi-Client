@@ -27,8 +27,6 @@ namespace transnavi.client.response
 
     public class GetUnitsInRectResponse : Response
     {
-        public string jsonrpc { get; set; }
         public List<GetUnitsInRectResponseResult> result { get; set; }
-        public int id { get; set; }
     }
 }

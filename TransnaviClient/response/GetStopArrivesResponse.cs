@@ -18,8 +18,6 @@ namespace transnavi.client.response
 
     public class GetStopArrivesResponse : Response
     {
-        public string jsonrpc { get; set; }
         public List<GetStopArrivesResponseResult> result { get; set; }
-        public int id { get; set; }
     }
 }

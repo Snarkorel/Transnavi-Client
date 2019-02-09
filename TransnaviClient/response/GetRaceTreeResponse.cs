@@ -25,8 +25,6 @@ namespace transnavi.client.response
 
     public class GetRaceTreeResponse : Response
     {
-        public string jsonrpc { get; set; }
         public List<GetRaceTreeResponseResult> result { get; set; }
-        public int id { get; set; }
     }
 }

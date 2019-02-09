@@ -13,8 +13,6 @@ namespace transnavi.client.response
 
     public class GetStopsInRectResponse : Response
     {
-        public string jsonrpc { get; set; }
         public List<GetStopsInRectResponseResult> result { get; set; }
-        public int id { get; set; }
     }
 }

@@ -40,8 +40,6 @@ namespace transnavi.client.response
 
     public class GetScheduleResponse : Response
     {
-        public string jsonrpc { get; set; }
         public GetScheduleResponseResult result { get; set; }
-        public int id { get; set; }
     }
 }

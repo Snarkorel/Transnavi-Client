@@ -47,8 +47,6 @@ namespace transnavi.client.response
 
     public class GetRouteResponse : Response
     {
-        public string jsonrpc { get; set; }
         public GetRouteResponseResult result { get; set; }
-        public int id { get; set; }
     }
 }

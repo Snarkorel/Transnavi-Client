@@ -1,7 +1,14 @@
-﻿namespace transnavi.client.response
+﻿using Newtonsoft.Json;
+
+namespace transnavi.client.response
 {
-    public abstract class Response
+    public class Response
     {
-        //TODO
+        [JsonProperty("id")]
+        public int ResponseId { get; set; }
+        [JsonProperty("jsonrpc")]
+        public string JsonRpcVersion { get; set; }
+
+        protected Response() { }
     }
 }
