@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TransnaviClient.response
+﻿namespace TransnaviClient.response
 {
-    class Response
+    public abstract class Response
     {
+        //TODO
     }
 }
