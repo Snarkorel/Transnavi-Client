@@ -61,6 +61,7 @@
     <Compile Include="response\GetUnitsResponse.cs" />
     <Compile Include="response\Response.cs" />
     <Compile Include="response\StartSessionResponse.cs" />
+    <Compile Include="response\VehicleInfo.cs" />
     <Compile Include="TransnaviClient.cs" />
   </ItemGroup>
   <ItemGroup>
