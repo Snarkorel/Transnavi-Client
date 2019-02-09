@@ -12,4 +12,6 @@
 * GetRouteTripsInfo;
 * GetSchedule (for stop, or for all stops in direction)
 
+Third-party dependencies: [Json.NET] (https://www.newtonsoft.com/json) by Newtonsoft
+
 Work in progress.
