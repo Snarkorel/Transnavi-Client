@@ -26,13 +26,13 @@ namespace transnavi.client
         }
 
         //TODO: error handling
-        private Response GetResponse(Request request)
+        private Response GetResponse(Request request, Type responseType)
         {
             var requestJson = JsonConvert.SerializeObject(request);
             var httpResponse = PostHttpRequest(requestJson);
             _requestId++;
-            var responseJson = JsonConvert.DeserializeObject<Response>(httpResponse.Result);
-            return responseJson;
+            var responseJson = JsonConvert.DeserializeObject(httpResponse.Result, responseType);
+            return (Response)responseJson;
         }
 
         private async Task<string> PostHttpRequest(string payload)
@@ -50,7 +50,7 @@ namespace transnavi.client
             var startReq = new StartSessionRequest(_requestId);
             try
             {
-                var response = GetResponse(startReq) as StartSessionResponse;
+                var response = (StartSessionResponse)GetResponse(startReq, typeof(StartSessionResponse));
                 _sid = response.Result.Sid;
                 _isInitialized = true;
             }
@@ -70,7 +70,7 @@ namespace transnavi.client
         public List<GetStopArrivesResponseResult> GetStopArrivalForecast(int stopId)
         {
             var stopArrReq = new GetStopArrivesRequest(_requestId, _sid, stopId);
-            var response = GetResponse(stopArrReq) as GetStopArrivesResponse;
+            var response = (GetStopArrivesResponse)GetResponse(stopArrReq, typeof(GetStopArrivesResponse));
             return response.result;
         }
 
