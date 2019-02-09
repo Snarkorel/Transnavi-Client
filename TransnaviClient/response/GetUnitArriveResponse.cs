@@ -1,21 +1,29 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json; //TODO
+using Newtonsoft.Json;
 
 namespace Snarkorel.transnavi.client.response
 {
     public class GetUnitArriveResponseResult
     {
-        public string u_id { get; set; }
-        public string mr_id { get; set; }
-        public string rl_racetype { get; set; }
-        public string st_id { get; set; }
-        public string ta_systime { get; set; }
-        public string ta_arrivetime { get; set; }
-        public string st_title { get; set; }
+        [JsonProperty("u_id")]
+        public string VehicleId { get; set; }
+        [JsonProperty("mr_id")]
+        public string RouteId { get; set; }
+        [JsonProperty("rl_racetype")]
+        public string RouteDirection { get; set; }
+        [JsonProperty("st_id")]
+        public string StopId { get; set; }
+        [JsonProperty("ta_systime")]
+        public string NavigationTime { get; set; }
+        [JsonProperty("ta_arrivetime")]
+        public string ArrivalTime { get; set; }
+        [JsonProperty("st_title")]
+        public string StopName { get; set; }
     }
 
     public class GetUnitArriveResponse : Response
     {
-        public List<GetUnitArriveResponseResult> result { get; set; }
+        [JsonProperty("result")]
+        public List<GetUnitArriveResponseResult> Result { get; set; }
     }
 }

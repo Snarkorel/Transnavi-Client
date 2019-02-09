@@ -1,18 +1,23 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json; //TODO
+using Newtonsoft.Json;
 
 namespace Snarkorel.transnavi.client.response
 {
     public class GetStopsInRectResponseResult
     {
-        public string st_id { get; set; }
-        public string st_title { get; set; }
-        public string st_lat { get; set; }
-        public string st_long { get; set; }
+        [JsonProperty("st_id")]
+        public string StopId { get; set; }
+        [JsonProperty("st_title")]
+        public string StopName { get; set; }
+        [JsonProperty("st_lat")]
+        public string StopLatitude { get; set; }
+        [JsonProperty("st_long")]
+        public string StopLongitude { get; set; }
     }
 
     public class GetStopsInRectResponse : Response
     {
-        public List<GetStopsInRectResponseResult> result { get; set; }
+        [JsonProperty("result")]
+        public List<GetStopsInRectResponseResult> Result { get; set; }
     }
 }

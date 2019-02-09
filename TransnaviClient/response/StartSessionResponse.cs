@@ -5,7 +5,7 @@ namespace Snarkorel.transnavi.client.response
     public class StartSessionResponseResult
     {
         [JsonProperty("sid")]
-        public string Sid { get; set; }
+        public string SessionId { get; set; }
     }
 
     public class StartSessionResponse : Response

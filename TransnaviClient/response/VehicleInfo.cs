@@ -26,8 +26,11 @@ namespace Snarkorel.transnavi.client.response
         public string Speed { get; set; }
         [JsonProperty("u_course")]
         public string Direction { get; set; }
+        /// <summary>
+        /// Unknown parameter. Always 1
+        /// </summary>
         [JsonProperty("u_inv")]
-        public string u_inv { get; set; } //I don't know what is is. Always 1.
+        public string u_inv { get; set; }
         [JsonProperty("mr_id")]
         public string RouteId { get; set; }
         [JsonProperty("mr_num")]

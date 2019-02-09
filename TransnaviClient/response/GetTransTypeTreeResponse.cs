@@ -1,24 +1,31 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json; //TODO
+using Newtonsoft.Json;
 
 namespace Snarkorel.transnavi.client.response
 {
     public class TransportTypeTreeResponseRoute
     {
-        public string mr_id { get; set; }
-        public string mr_num { get; set; }
-        public string mr_title { get; set; }
+        [JsonProperty("mr_id")]
+        public string RouteId { get; set; }
+        [JsonProperty("mr_num")]
+        public string RouteNumber { get; set; }
+        [JsonProperty("mr_title")]
+        public string RouteName { get; set; }
     }
 
     public class TransportTypeTreeResponseResult
     {
-        public string tt_id { get; set; }
-        public string tt_title { get; set; }
-        public List<TransportTypeTreeResponseRoute> routes { get; set; }
+        [JsonProperty("tt_id")]
+        public string TransportTypeId { get; set; }
+        [JsonProperty("tt_title")]
+        public string TransportTypeName { get; set; }
+        [JsonProperty("routes")]
+        public List<TransportTypeTreeResponseRoute> Routes { get; set; }
     }
 
     public class TransportTypeTreeResponse : Response
     {
-        public List<TransportTypeTreeResponseResult> result { get; set; }
+        [JsonProperty("result")]
+        public List<TransportTypeTreeResponseResult> Result { get; set; }
     }
 }
