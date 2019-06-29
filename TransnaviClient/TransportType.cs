@@ -4,6 +4,7 @@
     {
         Bus = 1,
         Trolleybus = 2,
-        Tram = 3
+        Tram = 3,
+        Electrobus = 5
     }
 }
